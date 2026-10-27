@@ -1,0 +1,35 @@
+# macOS metadata
+.DS_Store
+._*
+
+# Dependencies and generated frontend output
+node_modules/
+dist/
+/build/
+
+# Local configuration; keep shareable examples
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Desktop preparation and Rust build output
+/.desktop-cache/
+/.desktop-backend/
+/src-tauri/target/
+/src-tauri/binaries/bim-node-*
+/src-tauri/gen/
+
+# Local runs, caches and logs
+/.local/
+.cache/
+*.log
+
+# Test coverage
+coverage/
+
+# Packaged release binaries; keep release notes and checksums
+/releases/*.zip
+/releases/*.dmg
+/releases/*.exe
+/releases/*.app/

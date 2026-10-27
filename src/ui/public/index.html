@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f7f7f4">
+  <title>Open Vibe Coder — build your app</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23182c47'/%3E%3Cpath fill='%23ffffff' d='M7 7h7v7H7zm11 0h7v7h-7zM7 18h7v7H7zm11 0h7v7h-7z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/styles.css">
+  <style id="studio-editor-nonce"></style>
+  <script src="/desktop-transport.js" defer></script>
+  <script src="/code-editor.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to workspace</a>
+  <div class="studio-shell">
+    <aside class="sidebar" aria-label="Projects">
+      <a class="brand" href="/" aria-label="Open Vibe Coder home">
+        <span class="brand-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 192 192"><rect x="3" y="3" width="186" height="186" rx="43" fill="#152b46" stroke="#40516a" stroke-width="3"/><g transform="translate(-4 -22)"><path d="M71 157v37m30-37v37" stroke="#eaf1f8" stroke-width="10" stroke-linecap="round"/><rect x="56" y="122" width="61" height="49" rx="15" fill="#eaf1f8"/><rect x="70" y="135" width="14" height="14" rx="4" fill="#fa795f"/><path d="m57 137-15 17 13 9m57-27 22-28 18 4" fill="none" stroke="#eaf1f8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><rect x="145" y="98" width="20" height="20" rx="5" fill="#fa795f"/><rect x="51" y="73" width="72" height="53" rx="18" fill="#eaf1f8"/><rect x="60" y="83" width="54" height="30" rx="11" fill="#152b46"/><g fill="#eaf1f8"><rect x="72" y="92" width="6" height="11" rx="3"/><rect x="96" y="92" width="6" height="11" rx="3"/></g><path d="M87 73V59" stroke="#eaf1f8" stroke-width="4"/><circle cx="87" cy="55" r="5" fill="#fa795f"/></g></svg></span>
+        <span><span class="brand-name">Open Vibe <strong>Coder</strong></span><small id="build-version">Loading version…</small></span>
+      </a>
+      <button class="new-run-button" id="new-run" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        New project
+        <span aria-hidden="true">↗</span>
+      </button>
+      <div class="sidebar-section-label">PROJECT</div>
+      <div class="project-card">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10H3Z"/></svg>
+        <div><strong id="active-project-name">No project open</strong><span id="active-project-path">Start a new project</span></div>
+        <button id="open-project-settings" type="button" class="project-settings-button" aria-label="Project settings and connections" title="Project settings and connections" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 3-.7 2.2-2 .9L4 5.6 2 9l1.6 1.7v2.6L2 15l2 3.4 2.3-.5 2 .9L9 21h4l.7-2.2 2-.9 2.3.5 2-3.4-1.6-1.7v-2.6L20 9l-2-3.4-2.3.5-2-.9L13 3Z"/><circle cx="11" cy="12" r="3"/></svg></button>
+      </div>
+      <div class="sidebar-section-label sessions-label"><span>RECENT</span><span id="run-count">0</span></div>
+      <nav class="run-list" id="run-list" aria-label="Recent projects">
+        <p class="sidebar-empty">Your projects will appear here.</p>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="local-note"><span class="local-symbol" aria-hidden="true">⌘</span><span>Your files stay local<small id="local-provider-label">OpenRouter · free models</small></span></div>
+        <div class="account-bar">
+          <span class="connection-dot" id="connection-dot" aria-hidden="true"></span>
+          <div class="account-meta"><span id="connection-label">Checking connection</span><span id="usage-summary" hidden>Loading free request usage…</span></div>
+          <button class="account-icon" id="open-usage" type="button" aria-label="View OpenRouter usage" title="Usage and free requests" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10m8 10V4m8 16v-7"/></svg>
+          </button>
+          <button class="account-icon" id="open-settings" type="button" aria-label="Set up model connection" title="Model settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 3-.7 2.2-2 .9L4 5.6 2 9l1.6 1.7v2.6L2 15l2 3.4 2.3-.5 2 .9L9 21h4l.7-2.2 2-.9 2.3.5 2-3.4-1.6-1.7v-2.6L20 9l-2-3.4-2.3.5-2-.9L13 3Z"/><circle cx="11" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main" id="main">
+      <header class="topbar">
+        <div class="breadcrumbs"><span class="workspace-mark" aria-hidden="true">V</span><span>Workspace</span><span class="crumb-divider">/</span><strong id="project-breadcrumb">My workspace</strong></div>
+        <span class="environment-pill"><span aria-hidden="true"></span>Local client · external model</span>
+      </header>
+      <div class="notice" id="notice" hidden role="status"></div>
+      <div class="workspace">
+        <section class="conversation" aria-labelledby="workspace-title">
+          <div class="conversation-heading"><div><p class="eyebrow">BUILD WITH AN EXTERNAL MODEL</p><h1 id="workspace-title">Build your idea</h1></div><div class="run-status-group"><span class="run-status" id="run-status">Ready to start</span><span id="run-timer" role="timer" aria-live="off" hidden></span></div></div>
+          <div class="conversation-scroll" id="conversation-scroll" tabindex="0" aria-label="Requests and output">
+            <div class="welcome" id="welcome">
+              <div class="welcome-symbol" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M14 11h19v26H14zM9 17h5M9 24h5M9 31h5M33 17h6M33 24h6M33 31h6M20 17h7M20 24h7M20 31h4"/><path class="symbol-accent" d="m34 7 2-4 2 4 4 2-4 2-2 4-2-4-4-2Z"/></svg></div>
+              <p class="welcome-kicker">Your idea. Your code.</p>
+              <h2>From idea to<br>a working app.</h2>
+              <p class="welcome-copy">Describe what you want to create. Choose a free OpenRouter model, edit the code, and preview your app instantly.</p>
+              <div class="welcome-features"><span><i aria-hidden="true">01</i>Your request</span><span><i aria-hidden="true">02</i>Real model requests</span><span><i aria-hidden="true">03</i>Verifiable results</span></div>
+            </div>
+            <div class="run-conversation" id="run-conversation" hidden>
+              <article class="user-message"><span class="avatar user-avatar" aria-hidden="true">J</span><div><div class="message-byline">The request <time id="run-date"></time></div><p id="run-task">Describe what you want to build.</p><span class="message-tag">Your project · local files</span></div></article>
+              <article class="assistant-message"><span class="avatar assistant-avatar" aria-hidden="true"><span class="mini-brand"><svg aria-hidden="true" focusable="false" viewBox="0 0 192 192"><rect x="3" y="3" width="186" height="186" rx="43" fill="#152b46" stroke="#40516a" stroke-width="3"/><g transform="translate(-4 -22)"><path d="M71 157v37m30-37v37" stroke="#eaf1f8" stroke-width="10" stroke-linecap="round"/><rect x="56" y="122" width="61" height="49" rx="15" fill="#eaf1f8"/><rect x="70" y="135" width="14" height="14" rx="4" fill="#fa795f"/><path d="m57 137-15 17 13 9m57-27 22-28 18 4" fill="none" stroke="#eaf1f8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><rect x="145" y="98" width="20" height="20" rx="5" fill="#fa795f"/><rect x="51" y="73" width="72" height="53" rx="18" fill="#eaf1f8"/><rect x="60" y="83" width="54" height="30" rx="11" fill="#152b46"/><g fill="#eaf1f8"><rect x="72" y="92" width="6" height="11" rx="3"/><rect x="96" y="92" width="6" height="11" rx="3"/></g><path d="M87 73V59" stroke="#eaf1f8" stroke-width="4"/><circle cx="87" cy="55" r="5" fill="#fa795f"/></g></svg></span></span><div class="assistant-content"><div class="message-byline">Open Vibe Coder <span id="run-model-label"></span></div><p id="run-intro">Loading task details.</p><div class="timeline" id="timeline" aria-live="polite"></div><div class="run-outcome" id="run-outcome" hidden></div></div></article>
+            </div>
+            <section id="build-error" class="build-error" role="region" aria-labelledby="build-error-title" hidden>
+              <strong id="build-error-title">The app cannot be built yet</strong>
+              <p id="build-error-location"></p><p id="build-error-message"></p>
+              <button id="edit-build-code" type="button" class="secondary-button">Edit code yourself</button>
+              <button id="repair-build" type="button" class="primary-button">Fix automatically · at most 1 AI request</button>
+              <p id="build-error-hint" class="field-hint">One targeted attempt. You can also edit the code yourself and rebuild without AI.</p>
+              <details><summary id="build-error-details-title">Build log and details</summary><p id="build-error-log-hint" class="field-hint">Last 20,000 characters. Open the full file for more output.</p><pre id="build-error-log" tabindex="0"></pre><button id="open-build-log" type="button" class="secondary-button">Open full log file</button></details>
+            </section>
+          </div>
+          <div class="conversation-jump-container"><button id="conversation-jump" class="conversation-jump" type="button" aria-label="New output: scroll to the bottom and follow automatically" title="Jump to latest output and resume following" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg><span class="jump-unread" aria-hidden="true"></span></button></div>
+          <div class="task-area">
+            <div class="task-card">
+              <select id="task-select" hidden><option value="app-project">Build freely · React + Tailwind</option><option value="crm-frontend">Build CRM app · Nemotron</option><option value="hr-backend">HR backend experiment</option></select>
+              <label class="field-label" id="prompt-label" for="project-prompt">What would you like to build or change?</label><textarea id="project-prompt" rows="3" maxlength="8000" placeholder="Describe your app, who will use it, and what it should do."></textarea>
+              <label id="planning-option" class="planning-option"><input id="planning-enabled" type="checkbox">Planning · create a build plan first <small>+1 free request</small></label><div class="task-actions"><div id="build-size-picker" class="build-size-picker"><label class="sr-only" for="change-size">Scope of change</label><select id="change-size"><option value="auto">Scope: automatic</option><option value="small">Small change · patch</option><option value="large">Large change · files</option></select></div><div class="model-picker"><label class="sr-only" for="model-select">Free OpenRouter model</label><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 5v8l-8 5-8-5V8Zm0 0v9m-8-4 8 4 8-4m-8 4v9"/></svg><select id="model-select"><option value="openrouter/free">OpenRouter · free router</option></select></div><button id="open-model-matrix" type="button" class="secondary-button" title="Choose a model for your task">Model guide</button><button class="stop-button" id="stop-run" type="button" hidden><span aria-hidden="true"></span>Stop building</button><button class="primary-button start-button" id="start-run" type="button">Build my app<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button></div>
+            </div>
+          </div>
+        </section>
+
+        <div id="workspace-splitter" class="workspace-splitter" role="separator" aria-label="Adjust workspace and results width" aria-orientation="vertical" aria-valuemin="25" aria-valuemax="75" aria-valuenow="35" tabindex="0"></div>
+        <aside class="report-panel" aria-label="Code, builds, and preview">
+          <div class="report-tabs" role="tablist" aria-label="Report view"><button id="tab-overview" class="report-tab active" role="tab" aria-selected="true" aria-controls="panel-overview" type="button">Overview</button><button id="tab-files" class="report-tab" role="tab" aria-selected="false" aria-controls="panel-files" tabindex="-1" type="button">Files<span class="tab-count" id="file-count" hidden></span></button><button id="tab-tests" class="report-tab" role="tab" aria-selected="false" aria-controls="panel-tests" tabindex="-1" type="button">Test output</button><button id="tab-preview" class="report-tab" role="tab" aria-selected="false" aria-controls="panel-preview" tabindex="-1" type="button">UI preview</button></div>
+          <section class="report-view" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+            <div class="report-section" id="hr-outline"><p class="eyebrow">EXPERIMENT OVERVIEW</p><h2>Build, test, improve</h2><p class="panel-copy">This experiment tests a small leave-management backend using a predefined task and acceptance checks.</p><div class="phase-outline"><div><span>1</span><p><strong>Build the baseline</strong><small>Sign-in, permissions, requests, and balances.</small></p></div><div><span>2</span><p><strong>Make a change</strong><small>Half-day leave requests while preserving the baseline.</small></p></div></div></div>
+            <div class="report-section metrics-section" id="metrics-section" hidden><p class="eyebrow">THIS RUN</p><div class="metrics" id="metrics"></div><p class="metric-note" id="metric-note"></p></div>
+            <div class="report-section" id="hr-checks"><div class="section-title-row"><h3>What do we check?</h3><span class="number-badge">18</span></div><ul class="check-categories"><li><span aria-hidden="true">✓</span>Sign-in and identity</li><li><span aria-hidden="true">✓</span>Ownership and team permissions</li><li><span aria-hidden="true">✓</span>Valid requests and correct balance</li><li><span aria-hidden="true">✓</span>Duplicate and concurrent approval</li><li><span aria-hidden="true">✓</span>Persistence and the changed hours increment</li></ul><details class="all-checks"><summary>View all 18 checks<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg></summary><ol id="acceptance-list"></ol></details></div>
+            <div id="project-outline" class="report-section" hidden><p class="eyebrow">YOUR APP</p><h2>From idea to working app</h2><p class="panel-copy">The scaffold includes React, JavaScript, Tailwind, and Vite. Start with one working user flow, then build on it step by step.</p><ol><li>Start with an empty scaffold or describe your first feature.</li><li>View and edit your files.</li><li>Open the app and test the user flow yourself.</li><li>Describe the next change or share an error message.</li></ol><button id="project-preview" type="button" class="primary-button" hidden>Open my app</button><button id="rebuild-project" type="button" class="secondary-button">Rebuild · no AI</button><p>A successful build checks compilation, not every feature. Planning uses two free model requests per task; without planning, one.</p></div><div id="crm-outline" class="report-section" hidden><p class="eyebrow">CRM BUILD EXPERIMENT</p><h2>An app for the practice API</h2><p class="panel-copy">Nemotron builds a standalone frontend with customer search and selection, connection checks, and error handling. One free model request; no automatic repair round.</p><p>Open Vibe Coder checks HTML, JavaScript syntax, required controls, and the API URL. These four file checks do not verify browser behavior.</p><button type="button" class="primary-button" id="open-preview" hidden>Open built app</button><p id="preview-message" role="status"></p></div><div class="scope-note" id="scope-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></svg><p><strong>This is a bounded model experiment.</strong>This experiment does not evaluate screens, Supabase, CRM, or deployment.</p></div>
+          </section>
+          <section class="report-view files-view" id="panel-files" role="tabpanel" aria-labelledby="tab-files" hidden><div class="panel-empty" id="files-empty"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6Zm8 0v5h4M9 13h6m-6 4h4"/></svg><h3>Your files will appear here</h3><p>After starting, you can view the saved code and task reports here.</p></div><div class="file-browser" id="file-browser" hidden><div class="file-list" id="file-list" role="tree" aria-label="Project files and reports"></div><div class="file-viewer"><div class="file-viewer-header"><span id="file-name">Choose a file</span><span id="file-mode">Read only</span><button id="format-file" class="secondary-button" type="button" hidden>Format</button><button id="save-file" class="secondary-button" type="button" hidden>Save file</button></div><div class="new-file-row" id="new-file-row" hidden><input id="new-file-path" aria-label="New file path" placeholder="src/components/Card.jsx"><button id="new-file" type="button" class="secondary-button">New file</button></div><div id="code-editor" hidden></div><textarea id="file-editor" aria-label="Edit source code" spellcheck="false" hidden></textarea><pre id="file-content" tabindex="0" aria-label="Selected file contents">Select a file above to view its contents.</pre></div></div></section>
+          <section class="report-view preview-view" id="panel-preview" role="tabpanel" aria-labelledby="tab-preview" hidden>
+            <div class="preview-toolbar">
+              <div class="viewport-buttons" role="group" aria-label="Viewport size">
+                <button type="button" data-viewport="desktop" aria-pressed="true" aria-label="Desktop" title="Desktop"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></button>
+                <button type="button" data-viewport="tablet" aria-pressed="false" aria-label="Tablet" title="Tablet"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M11 18h2"/></svg></button>
+                <button type="button" data-viewport="mobile" aria-pressed="false" aria-label="Mobile" title="Mobile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></button>
+              </div>
+              <div class="preview-actions"><button id="refresh-ui-preview" type="button" class="secondary-button preview-icon-button" aria-label="Refresh" title="Refresh preview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.1 6a8 8 0 0 1 13.7 5M4.2 13A8 8 0 0 0 17.9 18"/></svg></button><button id="external-ui-preview" type="button" class="secondary-button">Open in browser ↗</button></div>
+            </div>
+            <p id="ui-preview-message" class="field-hint" role="status">Build your app first to test the UI here.</p>
+            <div id="preview-builder" class="preview-builder" hidden>
+              <svg class="builder-scene" viewBox="0 0 320 230" aria-hidden="true" focusable="false">
+                <ellipse cx="160" cy="208" rx="125" ry="9" fill="#e8edf3"/>
+                <g class="builder-app">
+                  <rect x="158" y="57" width="125" height="139" rx="13" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+                  <path d="M159 84h123" stroke="#e2e8f0" stroke-width="2"/>
+                  <circle cx="172" cy="71" r="3" fill="#fa795f"/><circle cx="183" cy="71" r="3" fill="#cbd5e1"/><circle cx="194" cy="71" r="3" fill="#cbd5e1"/>
+                  <rect class="builder-brick brick-one" x="172" y="99" width="42" height="34" rx="6" fill="#152b46"/>
+                  <rect class="builder-brick brick-two" x="225" y="99" width="42" height="34" rx="6" fill="#fa795f"/>
+                  <rect class="builder-brick brick-three" x="172" y="144" width="42" height="34" rx="6" fill="#dce5ef"/>
+                  <rect class="builder-brick brick-four" x="225" y="144" width="42" height="34" rx="6" fill="#152b46"/>
+                </g>
+                <g class="builder-robot">
+                  <path d="M71 157v37m30-37v37" stroke="#152b46" stroke-width="10" stroke-linecap="round"/>
+                  <rect x="56" y="122" width="61" height="49" rx="15" fill="#152b46"/>
+                  <rect x="70" y="135" width="14" height="14" rx="4" fill="#fa795f"/>
+                  <path d="m57 137-15 17 13 9" fill="none" stroke="#152b46" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+                  <g class="builder-arm"><path d="m112 136 22-28 18 4" fill="none" stroke="#152b46" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><rect x="145" y="98" width="20" height="20" rx="5" fill="#fa795f"/></g>
+                  <rect x="51" y="73" width="72" height="53" rx="18" fill="#152b46"/>
+                  <rect x="60" y="83" width="54" height="30" rx="11" fill="#eaf1f8"/>
+                  <g class="builder-eyes" fill="#152b46"><rect x="72" y="92" width="6" height="11" rx="3"/><rect x="96" y="92" width="6" height="11" rx="3"/></g>
+                  <path d="M87 73V59" stroke="#152b46" stroke-width="4"/><circle class="builder-light" cx="87" cy="55" r="5" fill="#fa795f"/>
+                </g>
+                <g class="builder-spark" fill="none" stroke="#fa795f" stroke-width="3" stroke-linecap="round"><path d="M286 30v14m-7-7h14M142 47v10m-5-5h10"/></g>
+              </svg>
+              <strong id="builder-title">The model is building your app</strong>
+              <p>Your idea takes shape, one block at a time.</p>
+              <span class="builder-caption">The preview appears when the build finishes.</span>
+            </div>
+            <div id="ui-preview-stage" class="ui-preview-stage" data-viewport="desktop" hidden><iframe id="ui-preview-frame" title="Test the built app" sandbox="allow-scripts allow-same-origin allow-forms" referrerpolicy="no-referrer"></iframe></div>
+            <p class="field-hint">Desktop: available width · tablet: 768 px · mobile: 375 px. Rebuild after changing code or settings. The browser preview stays available while Open Vibe Coder is open.</p>
+          </section>
+          <section class="report-view tests-view" id="panel-tests" role="tabpanel" aria-labelledby="tab-tests" hidden><div class="panel-empty" id="tests-empty"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 3 2 2v5L5 20h14l-6-10V5l2-2M8 15h8"/></svg><h3>Results, not assumptions</h3><p>Test output appears after a build round runs. A model response alone does not count as a passing result.</p></div><div id="test-results" hidden><div class="test-select-wrap"><label for="test-select">Build round</label><select id="test-select"></select></div><pre class="test-output" id="test-output" tabindex="0" aria-label="Actual test output"></pre></div><details class="runner-output" id="runner-output" hidden><summary>Runner output</summary><pre id="runner-log" tabindex="0"></pre></details></section>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+    <form id="project-form">
+      <div class="dialog-heading"><div><span class="eyebrow">NEW PROJECT <span id="wizard-step-label">1 / 2</span></span><h2 id="project-dialog-title">Give your idea a home</h2></div><button id="close-project" type="button" class="icon-button" aria-label="Close project wizard">×</button></div>
+      <div id="wizard-details">
+        <p class="dialog-copy">Choose a name and location for your app. Open Vibe Coder creates the React and Tailwind scaffold for you.</p>
+        <label class="field-label" for="project-name">Project name</label><input id="project-name" type="text" maxlength="80" required placeholder="For example: My task planner" autocomplete="off">
+        <label class="field-label" for="project-folder">Full project location</label><div class="folder-picker"><input id="project-folder" type="text" value="Default Open Vibe Coder project directory" readonly><button id="choose-folder" type="button" class="secondary-button">Choose project location…</button></div>
+        <p class="field-hint" id="folder-hint">Choose the full project location, including the directory name. No extra directory is added.</p>
+      </div>
+      <div id="wizard-review" hidden><p class="dialog-copy">This is your project. You can then submit requests, edit files, and preview your app.</p><dl class="project-review"><dt>Project</dt><dd id="review-name"></dd><dt>Location</dt><dd id="review-path"></dd><dt>Scaffold</dt><dd>React · JavaScript · Tailwind · Vite</dd></dl><p class="wizard-note">Creating the scaffold uses no AI tokens.</p></div>
+      <p id="project-message" class="form-message" role="status" hidden></p>
+      <div class="dialog-actions"><button id="project-back" type="button" class="secondary-button">Cancel</button><button id="project-submit" type="submit" class="primary-button">Next →</button></div>
+    </form>
+  </dialog>
+  <dialog class="settings-dialog" id="project-settings-dialog" aria-labelledby="project-settings-title">
+    <form id="project-settings-form">
+      <div class="dialog-heading"><div><span class="eyebrow">THIS PROJECT</span><h2 id="project-settings-title">Connections</h2></div><button type="button" class="icon-button" id="close-project-settings" aria-label="Close connections">×</button></div>
+      <p class="dialog-copy" id="project-settings-path"></p>
+      <p class="field-hint">All settings are optional. Open Vibe Coder saves them in this project's .env. Rebuild after saving to apply the changes.</p>
+      <label class="field-label" for="supabase-url">Supabase project URL</label><input id="supabase-url" type="url" placeholder="https://your-project.supabase.co" autocomplete="off">
+      <label class="field-label" for="supabase-key">Supabase publishable key</label><input id="supabase-key" type="text" placeholder="sb_publishable_…" autocomplete="off" spellcheck="false">
+      <p class="field-hint">This is a public browser connection. Do not use a secret or service_role key. Configure table permissions in Supabase.</p>
+      <div class="schema-section"><div class="schema-heading"><strong>Supabase tables</strong><button id="fetch-project-schema" type="button" class="secondary-button">Fetch schema</button></div><p class="field-hint" id="project-schema-message">Save your Supabase connection first, then fetch the available tables and columns.</p><div id="project-schema-tables" class="schema-tables"></div><div id="schema-setup" hidden><p class="field-hint">One-time Supabase setup: open SQL Editor, paste this helper, and select Run. The helper only reads metadata using the caller's existing permissions.</p><button id="copy-schema-sql" type="button" class="secondary-button">Copy SQL</button><textarea id="schema-setup-sql" readonly aria-label="SQL for the Supabase metadata helper" rows="8" spellcheck="false"></textarea></div><p class="field-hint">Metadata only, no rows. The schema is included with your next AI build request. The key stays local.</p></div>
+      <label class="field-label" for="external-api-url">External API base URL</label><input id="external-api-url" type="url" placeholder="https://example.com/api/v1/" autocomplete="off">
+      <p class="field-hint">The API must allow browser requests through CORS. Secret API keys require a separate backend.</p>
+      <p class="form-message" id="project-settings-message" role="status" hidden></p>
+      <div class="dialog-actions"><button type="button" class="secondary-button" id="cancel-project-settings">Cancel</button><button type="submit" class="primary-button" id="save-project-settings">Save connections</button></div>
+    </form>
+  </dialog>
+  <dialog class="settings-dialog" id="usage-dialog" aria-labelledby="usage-title">
+    <div class="dialog-heading"><div><span class="eyebrow">YOUR OPENROUTER ACCOUNT</span><h2 id="usage-title">Usage and free requests</h2></div><button type="button" class="icon-button" id="close-usage" aria-label="Close usage view">×</button></div>
+    <p id="usage-message" class="dialog-copy" role="status">Loading usage…</p>
+    <div id="usage-details" hidden><div class="usage-main"><strong id="usage-remaining">—</strong><span>free requests left today</span></div><progress id="usage-progress" value="0" max="1" aria-label="Free requests used today" hidden></progress><p id="usage-daily" class="field-hint"></p><div class="usage-grid" id="usage-grid"></div><p class="field-hint" id="usage-reset"></p><p class="field-hint">These values are reported by OpenRouter. Missing values remain unknown. Dollar amounts are not token counts. Free requests may also be used outside Open Vibe Coder, and model availability can change.</p></div>
+    <div class="dialog-actions"><button id="refresh-usage" type="button" class="primary-button">Refresh</button></div>
+  </dialog>
+  <dialog class="settings-dialog" id="settings-dialog" aria-labelledby="settings-title">
+    <form id="settings-form">
+      <div class="dialog-heading"><div><span class="eyebrow">MODEL CONNECTION</span><h2 id="settings-title">Connect to OpenRouter</h2></div><button type="button" class="icon-button" id="close-settings" aria-label="Close settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div>
+      <p class="dialog-copy" id="provider-copy">Use your own free account. The client stores the connection locally and calls the external model.</p>
+      <div class="configured-note" id="configured-note" hidden>A local connection is already configured. Enter new credentials to replace it.</div>
+      <label class="field-label" for="provider-select">Provider</label><select class="provider-select" id="provider-select" name="provider"><option value="openrouter">OpenRouter · free models only</option></select>
+      <p class="provider-quota" id="provider-quota">Only free models from the current OpenRouter catalogue. Your account limits and model availability determine how much you can build.</p>
+      <div id="account-field" hidden><label class="field-label" for="account-id">Cloudflare Account ID</label><input id="account-id" name="accountId" type="text" autocomplete="off" spellcheck="false" pattern="[a-fA-F0-9]{32}" placeholder="32 characters from your Cloudflare account" aria-describedby="account-hint"><p class="field-hint" id="account-hint">Find this in the Cloudflare dashboard under Workers AI.</p></div>
+      <label class="field-label" id="token-label" for="api-token">OpenRouter API key</label><input id="api-token" name="token" type="password" autocomplete="new-password" spellcheck="false" required placeholder="Paste your API key" aria-describedby="token-hint"><p class="field-hint" id="token-hint">Use your own OpenRouter API key. This client only sends requests to verifiably free models.</p>
+      <div class="credential-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3M5 10h14v11H5Z"/></svg><p>Your token is not stored in the browser. Input fields are cleared after saving.</p></div>
+      <p class="form-message" id="settings-message" role="status" hidden></p>
+      <div class="dialog-actions"><button type="button" class="secondary-button" id="cancel-settings">Cancel</button><button type="button" class="secondary-button" id="test-connection" title="Test the saved API key; use Save and connect for a new key">Test saved connection</button><button type="submit" class="primary-button" id="save-settings">Save and connect</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+<dialog id="model-matrix-dialog" class="settings-dialog model-matrix-dialog" aria-labelledby="model-matrix-title"><div class="dialog-heading"><h2 id="model-matrix-title">Free OpenRouter models</h2><button id="close-model-matrix" type="button" class="secondary-button">Close</button></div><p>This list comes directly from OpenRouter. It includes only text models with the :free variant and zero prices. Automatic selects an available free model; you can also choose one yourself.</p><label class="field-label" for="model-search">Search by model or provider</label><input id="model-search" type="search" placeholder="Search models…"><button id="refresh-models" type="button" class="secondary-button">Refresh catalogue</button><p id="catalogue-status" role="status"></p><div class="matrix-table-wrap"><table><thead><tr><th>Model</th><th>Context</th><th></th></tr></thead><tbody id="model-matrix-body"></tbody></table></div><p>A successful build means your code compiles. Test your app's behavior yourself. There is no paid fallback or automatic retry loop.</p></dialog>
+</body>
+</html>

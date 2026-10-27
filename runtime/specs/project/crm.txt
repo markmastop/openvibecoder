@@ -1,0 +1,9 @@
+Build an English-language "Link customer" screen for a fictional expense claim. Use the public API https://crm-api.trimedixs.nl without authentication or credentials.
+
+Include an explanatory header, a "Check connection" button, a "Company name or customer number" search form, results showing customer number, company name, city, and a Select button, and a Selected customer panel with Clear selection. Place results and selection side by side on desktop and stack them on mobile. State that all data is fictional. Link to https://crm-api.trimedixs.nl/docs/ and https://crm-api.trimedixs.nl/openapi.json.
+
+GET /api/v1/status returns {"status":"ok","system":"Trimedixs CRM training API","version":"1","fictional":true}.
+GET /api/v1/customers?search=... returns {"customers":[{"customerId":"K-1001","companyName":"Zorgcentrum Lindevaert","city":"Breda"}],"total":1,"limit":20}.
+Trim search input and accept 2–100 characters; otherwise show feedback without fetching. Use URLSearchParams for exactly one search parameter. Only company name and customer number are searchable, not city. If total > limit, display the total and ask the user to refine the search; do not invent pagination.
+
+Do not make automatic API requests on page load. Distinguish initial, loading, results, empty, and error states. Clear old results and selection immediately when a new search starts. Explain network and HTTP errors and allow recovery. Use AbortController and an eight-second timeout, including reading JSON. Prevent stale responses from overwriting newer results. Selection and clearing work without a database and remain in memory only.

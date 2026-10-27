@@ -1,0 +1,24 @@
+{
+  "template": "bim-portal-v1",
+  "appName": "My app",
+  "tagline": "Your idea takes shape",
+  "logoText": "BI",
+  "logoUrl": "",
+  "theme": {
+    "primary": "#17324d",
+    "accent": "#3767e8"
+  },
+  "footer": {
+    "visible": true,
+    "text": "My app"
+  },
+  "authentication": "none",
+  "routes": [
+    {
+      "path": "/start",
+      "title": "Home",
+      "screen": "HomeScreen",
+      "icon": "home"
+    }
+  ]
+}
